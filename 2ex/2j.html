@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2g</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- React, ReactDOM, and Babel -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function ProductDetails({ name, price, discountprice, imagesSrc }) {
+        return (
+          <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", display: "inline-block" }}>
+            <img src={imagesSrc} width="150" />
+            <p>{name}</p>
+            {discountprice ? (
+              <>
+                <p>Price: <del>${price}</del></p>
+                <p>Discount price: ${discountprice}</p>
+              </>
+            ) : (
+              <p>Price: ${price}</p>
+            )}
+            <button>Add to cart</button>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ProductDetails  
+              name="Cotton socks"
+              discountprice="5.45"
+              price="10.90"
+              imagesSrc="socks.png"
+            />
+            <ProductDetails 
+              name="Tennis balls" 
+              price="10.90"
+              imagesSrc="tennis-balls.png"
+            />
+            <ProductDetails 
+              name="T-shirt" 
+              price="7.99"
+              imagesSrc="plain-t-shirt.png"
+            />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

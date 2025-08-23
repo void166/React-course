@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+        body{
+            background-color: aliceblue;
+            height: 100vh;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            align-content: center;
+            gap: 20px;
+        }
+        .btn{
+            color: white;
+            font-size: 15px;
+            background-color: rgb(25, 135, 84);
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App() {
+        const [count, setCount] = React.useState(0);
+        const buttonRef = React.useRef();
+
+        function increaseCount() {
+          setCount(count + 1);
+        }
+        function reset(){
+            setCount(0);
+        }
+        function autoClick(){
+            const buttonElm = buttonRef.current;
+            setInterval(()=>{
+                if(buttonElm){
+                    buttonElm.click();
+                }
+            },1000);
+        }
+
+        return (
+            <div className="container">
+                <button className="btn" ref={buttonRef} onClick={increaseCount}>
+                Clicked {count} {count ===1 ? 'time':'times'}
+                </button>
+                <button className="btn" onClick={reset}>reset</button>
+                <button className="btn" onClick={autoClick} >Auto Click</button>
+            </div>  
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

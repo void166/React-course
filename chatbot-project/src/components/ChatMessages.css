@@ -1,0 +1,16 @@
+.chat-messages-container {
+    flex-grow: 1;
+    margin-top: 20px;
+    overflow: scroll;
+    scrollbar-width: none;
+  
+  }
+  .chat-empty{
+    flex: 1;          /* үлдсэн зайг эзэлнэ */
+  overflow-y: auto;  /* scroll хийх боломж */
+  padding: 10px;
+  display: flex;
+  justify-content: center; /* horizontal төвлөрүүлнэ */
+  align-items: center; 
+  flex:content;
+  }
